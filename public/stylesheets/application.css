@@ -1,0 +1,13 @@
+body { font-family:Arial,Helmet,Freesans,sans-serif; }
+#wrapper { width: 760px; margin: 100px auto; }
+h1 { margin: 0; }
+#main {
+  border: 2px solid black;
+  min-height: 300px;
+  padding: 10px;
+  -moz-box-shadow: 2px 2px 6px #666;
+  -webkit-box-shadow: 2px 2px 6px #666;
+  box-shadow: 2px 2px 6px #666;
+  font-size: 18px;
+  color: #666;
+}

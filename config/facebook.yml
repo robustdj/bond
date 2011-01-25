@@ -1,0 +1,12 @@
+defaults: &defaults
+  app_id: 194509447227711
+  secret_key: a14b57adbfe682393ddadcbf3090165f
+
+production:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults

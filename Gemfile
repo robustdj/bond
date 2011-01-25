@@ -2,6 +2,14 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.0.3'
 gem 'koala'
+gem 'heroku'
+
+group :development, :test do
+  gem 'ruby-debug19', :require => 'ruby-debug'
+  gem 'rspec', '>=2'
+  gem 'rspec-rails', '>=2'
+end
+
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
