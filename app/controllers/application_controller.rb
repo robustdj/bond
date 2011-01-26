@@ -3,7 +3,10 @@ class ApplicationController < ActionController::Base
   before_filter :init_oauth, :parse_facebook_cookies
 
   def init_oauth
-    @oauth ||= Koala::Facebook::OAuth.new
+    @oauth ||= Koala::Facebook::OAuth.new(root_url)
+    if params['code']
+      @graph ||= Koala::Facebook::GraphAPI.new(@oauth.get_access_token(params['code']))
+    end
   end
 
   def parse_facebook_cookies

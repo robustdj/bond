@@ -10,6 +10,7 @@
     <section id="wrapper">
       <header>
         <h1>Bond</h1>
+        <%= link_to image_tag("fb_login.png"), Koala::Facebook::OAuth.new.url_for_oauth_code(:callback => root_url, :permissions => "user_likes, friends_likes") %>
       </header>
       <section id="main">
         <%= yield %>

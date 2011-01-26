@@ -1,2 +1,12 @@
-<%= link_to 'Login', Koala::Facebook::OAuth.new.url_for_oauth_code(:callback => root_url) %>
-Find out things that you and a particular friend both like. Bond!
+<h2>Find out things that you and a particular friend both like. Bond!</h2>
+<% if @graph %>
+  <div id="search">
+    <label for="friend_search">Search</label><input type=text id="friend_search">
+  </div>
+  <%= @graph.get_connections("me", "friends").each do |friend| %>
+    <div class="friend">
+      <%= image_tag "http://graph.facebook.com/#{friend["id"]}/picture" %>
+      <span><%= friend["name"] %></span>
+    </div>
+  <% end %>
+<% end %>
