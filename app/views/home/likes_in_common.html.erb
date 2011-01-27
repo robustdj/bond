@@ -1,0 +1,7 @@
+<h2>You and <%= @friend["name"] %> both like:</h2>
+
+<ul>
+<% @likes_in_common.each do |like| %>
+  <li><%= like["name"] %></li>
+<% end %>
+</ul>

@@ -1,3 +1,5 @@
+require File.join(Rails.root, 'lib/facebook')
+
 class HomeController < ApplicationController
   include Facebook
 
@@ -10,6 +12,7 @@ class HomeController < ApplicationController
   end
 
   def likes_in_common
+    @friend = @graph.get_object params[:friend_id]
     @likes_in_common = get_likes_in_common(@graph, "me", params[:friend_id])
   end
 end

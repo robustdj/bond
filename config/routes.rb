@@ -1,6 +1,7 @@
 FbLikes::Application.routes.draw do
   root :to => 'home#index'
   match '/search' => 'home#search'
+  match '/likes_in_common' => 'home#likes_in_common'
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -7,9 +7,14 @@
     <%= csrf_meta_tag %>
   </head>
   <body>
+    <script>
+      $(document).ready(function() {
+        $(".friend").clickable();
+      });
+    </script>
     <section id="wrapper">
       <header>
-        <h1>Bond</h1>
+        <h1><%= link_to 'Bond', root_path %></h1>
         <%= link_to image_tag("fb_login.png"), Koala::Facebook::OAuth.new.url_for_oauth_code(:callback => root_url, :permissions => "user_likes, friends_likes") %>
       </header>
       <section id="main">
