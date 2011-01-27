@@ -1,13 +1,13 @@
 <h2>Find out things that you and a particular friend both like. Bond!</h2>
 <% if @graph %>
-  <%= form_tag('/search', :method => :get, :id => "search") do %>
-      <%= label_tag :query, "Search" %>
-      <%= text_field_tag :query %>
-    <% end %>
-  <%= @graph.get_connections("me", "friends").each do |friend| %>
+  <div id="search">
+    <label for="friend_search">Search</label><input type=text id="friend_search">
+  </div>
+  <%= @friends.each do |friend| %>
     <div class="friend">
       <%= image_tag "http://graph.facebook.com/#{friend["id"]}/picture" %>
       <span><%= friend["name"] %></span>
     </div>
   <% end %>
 <% end %>
+
