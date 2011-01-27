@@ -4,11 +4,12 @@ class HomeController < ApplicationController
   include Facebook
 
   def index
-    #@access_token = @facebook_cookies['access_token']
+    @friends = @graph.get_connections("me", "friends")
   end
 
   def search
     @friends = search_my_friends(@graph, params[:query])
+    render "index"
   end
 
   def likes_in_common

@@ -1,8 +1,0 @@
-<h2>Find out things that you and a particular friend both like. Bond!</h2>
-<% if @graph %>
-  <%= render "search_form" %>
-  <% @friends.each do |friend| %>
-    <%= render "friend", :friend => friend %>
-  <% end %>
-<% end %>
-
