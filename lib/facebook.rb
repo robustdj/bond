@@ -13,7 +13,7 @@ module Facebook
   end
 
   def get_likes(graph, likes_ids)
-    likes_ids.nil? ? [] : graph.get_objects(likes_ids)
+    likes_ids.blank? ? [] : graph.get_objects(likes_ids)
   end
 
   def get_likes_in_common(graph, friend, friend2)

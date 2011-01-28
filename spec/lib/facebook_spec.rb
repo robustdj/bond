@@ -32,7 +32,7 @@ describe Facebook do
     end
 
     it "should return an empty array when nil is passed in" do
-      get_likes(graph, nil).should == []
+      get_likes(graph, []).should == []
     end
   end
 
