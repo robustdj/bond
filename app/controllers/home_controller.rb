@@ -17,4 +17,5 @@ class HomeController < ApplicationController
     likes_ids = get_likes_in_common(@graph, "me", params[:friend_id])
     @likes_in_common = likes_ids.blank? ? [] : @graph.get_objects(likes_ids)
   end
+
 end
