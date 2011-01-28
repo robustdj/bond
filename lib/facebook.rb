@@ -7,8 +7,8 @@ module Facebook
   def get_likes_in_common(graph, friend, friend2)
     friend_likes = graph.get_connections friend, "likes"
     friend2_likes = graph.get_connections friend2, "likes"
-    friend_likes.map{|like| like.delete_if{|k,v| k=="created_time"}}
-    friend2_likes.map{|like| like.delete_if{|k,v| k=="created_time"}}
+    friend_likes.map!{|like| like["id"]}
+    friend2_likes.map!{|like| like["id"]}
     friend_likes & friend2_likes
   end
 end

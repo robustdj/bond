@@ -1,7 +1,13 @@
-<h2>You and <%= @friend["name"] %> both like:</h2>
+<% if @likes_in_common.blank? %>
+  <h2><span>You</span> and <span><%= @friend["name"] %></span> have nothing in common.</h2>
+<% else %>
+  <h2><span>You</span> and <span><%= @friend["name"] %></span> both like:</h2>
 
-<ul>
-<% @likes_in_common.each do |like| %>
-  <li><%= like["name"] %></li>
+  <% @likes_in_common.each do |id, info| %>
+    <div class="like">
+      <h2><%= link_to info["name"], info["link"] %></h2>
+      <%= image_tag info["picture"], :height => "100" %>
+      <p><%= info["category"] %></p>
+    </div>
+  <% end %>
 <% end %>
-</ul>

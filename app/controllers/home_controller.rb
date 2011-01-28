@@ -4,7 +4,7 @@ class HomeController < ApplicationController
   include Facebook
 
   def index
-    @friends = @graph.get_connections("me", "friends")
+    @friends = @graph.try(:get_connections, "me", "friends")
   end
 
   def search
@@ -14,6 +14,7 @@ class HomeController < ApplicationController
 
   def likes_in_common
     @friend = @graph.get_object params[:friend_id]
-    @likes_in_common = get_likes_in_common(@graph, "me", params[:friend_id])
+    likes_ids = get_likes_in_common(@graph, "me", params[:friend_id])
+    @likes_in_common = likes_ids.blank? ? [] : @graph.get_objects(likes_ids)
   end
 end

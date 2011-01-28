@@ -78,10 +78,7 @@ describe Facebook do
           "category"=>"Music",
           "id"=>"104641836243368",
           "created_time"=>"2010-04-29T05:21:55+0000"}])
-      get_likes_in_common(graph, "me", @kobe["id"]).should == [
-        {"name"=>"Ugly Duckling", "category"=>"Musician/band", "id"=>"108219325866594" },
-        {"name"=>"Self Scientific", "category"=>"Music", "id"=>"104641836243368" }
-      ]
+      get_likes_in_common(graph, "me", @kobe["id"]).should == ["108219325866594", "104641836243368"]
     end
 
     it "should return an empty array when nothing in common" do
