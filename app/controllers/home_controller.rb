@@ -15,6 +15,6 @@ class HomeController < ApplicationController
   def likes_in_common
     @friend = get_friend(@graph, params[:friend_id])
     likes_ids = get_likes_in_common(@graph, "me", params[:friend_id])
-    @likes_in_common = get_likes(likes_ids)
+    @likes_in_common = get_likes(@graph, likes_ids)
   end
 end

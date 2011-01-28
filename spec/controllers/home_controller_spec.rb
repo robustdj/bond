@@ -30,7 +30,7 @@ describe HomeController do
       controller.instance_variable_set("@graph", Object.new)
       controller.should_receive(:get_friend).with(assigns(:graph), friend_id)
       controller.should_receive(:get_likes_in_common).with(assigns(:graph), "me", friend_id)
-      controller.should_receive(:get_likes)
+      controller.should_receive(:get_likes).with(assigns(:graph), anything())
       get :likes_in_common, :friend_id => friend_id
     end
   end
