@@ -4,13 +4,8 @@ describe HomeController do
   describe "GET index" do
     it "should get friends from the graph api" do
       controller.instance_variable_set("@graph", Object.new)
-      assigns(:graph).should_receive(:get_connections).with("me", "friends")
+      controller.should_receive(:get_my_friends).with(assigns(:graph))
       get :index
-    end
-
-    it "should not raise an exception when graph is nil" do
-      expect { get :index }.to_not raise_exception
-      assigns(:friends).should be_nil
     end
   end
 
@@ -31,11 +26,12 @@ describe HomeController do
 
   describe "GET likes_in_common" do
     it "should get query graph api for likes in common" do
+      friend_id = 123
       controller.instance_variable_set("@graph", Object.new)
-      assigns(:graph).stub(:get_object)
-      assigns(:graph).stub(:get_objects)
-      controller.should_receive(:get_likes_in_common).with(assigns(:graph), "me", 123)
-      get :likes_in_common, :friend_id => 123
+      controller.should_receive(:get_friend).with(assigns(:graph), friend_id)
+      controller.should_receive(:get_likes_in_common).with(assigns(:graph), "me", friend_id)
+      controller.should_receive(:get_likes)
+      get :likes_in_common, :friend_id => friend_id
     end
   end
 end

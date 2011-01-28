@@ -6,6 +6,36 @@ describe Facebook do
 
   let!(:graph) { Object.new }
 
+  describe "#get_my_friends" do
+    it "should query graph api for my friends" do
+      graph.should_receive(:get_connections).with("me", "friends")
+      get_my_friends(graph)
+    end
+
+    it "should not raise an exception when graph is not initialized" do
+      graph = nil
+      expect{ get_my_friends(graph) }.to_not raise_exception
+    end
+  end
+
+  describe "#get_friend" do
+    it "should query graph api for a particular friend" do
+      graph.should_receive(:get_object).with(123)
+      get_friend(graph, 123)
+    end
+  end
+
+  describe "#get_likes" do
+    it "should query the graph api for a list of likes" do
+      graph.should_receive(:get_objects).with([1,2,3])
+      get_likes(graph, [1,2,3])
+    end
+
+    it "should return an empty array when nil is passed in" do
+      get_likes(graph, nil).should == []
+    end
+  end
+
   describe "#search_my_friends" do
     before do
       graph.stub(:get_connections).with("me", "friends").and_return([
